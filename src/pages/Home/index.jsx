@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button, SkillCard } from '../../components'
-import { View, Text, TextInput, StyleSheet } from 'react-native'
+import { View, Text, TextInput, StyleSheet, FlatList } from 'react-native'
 
 
 
@@ -12,6 +12,10 @@ export default function Home() {
     function newSkillHandler() {
         setMySkills(currentSkills => [...currentSkills, skill])
         setSkill('')
+    }
+
+    function itemHandler({item}) {
+        return <SkillCard skill={item}/>
     }
 
     return (
@@ -31,10 +35,11 @@ export default function Home() {
                 Your Skills
             </Text>
 
-            {   mySkills.map((skill, index) => {
-                    <SkillCard key={`${skill}_${index}`} skill={skill}/>
-                })
-            }   
+            <FlatList
+                data={mySkills}
+                renderItem={itemHandler}
+                keyExtractor={(item, index) => `${item}_${index}`}
+            />
         </View>
     )
 }
