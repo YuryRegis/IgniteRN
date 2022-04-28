@@ -43,7 +43,7 @@ export default function Home() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#121015'
+        backgroundColor: '#121015',
         paddingHorizontal: 30,
         paddingVertical: 70
     },
